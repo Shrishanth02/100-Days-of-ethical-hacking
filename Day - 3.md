@@ -1,4 +1,4 @@
-This is the power of OSINT. This is the foundation of digital investigation. And I'm just getting started.
+
 
 <img width="1024" height="1024" alt="Image" src="https://github.com/user-attachments/assets/68f156d5-9f6b-4b70-b864-8c14c636eb39" />
 
@@ -11,3 +11,5 @@ This is the power of OSINT. This is the foundation of digital investigation. And
 <img width="1679" height="862" alt="Image" src="https://github.com/user-attachments/assets/085ffa4f-f22a-435b-8179-fddcaa2b4d91" />
 
 <img width="1199" height="890" alt="Image" src="https://github.com/user-attachments/assets/806fbafb-7c19-4645-bef0-d7949f7c26bc" />
+
+This is the power of OSINT. This is the foundation of digital investigation. And I'm just getting started.
