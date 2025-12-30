@@ -1,0 +1,17 @@
+Private vs Public IP Addresses was a game-changer for understanding network security. I learned that certain IP ranges are reserved for private networks:
+- 10.0.0.0 to 10.255.255.255
+- 172.16.0.0 to 172.31.255.255  
+- 192.168.0.0 to 192.168.255.255
+
+Domain Names and Domain Structure made the internet make sense. I learned that domain names like "www.example.com" are human-readable addresses that map to IP addresses. The structure is hierarchical:
+- TLD (Top Level Domain): .com, .org, .net
+- Second Level Domain: example
+- Subdomain: www
+
+Ports opened up a whole new dimension of understanding. I learned that IP addresses identify devices, but ports identify specific services running on those devices. Ports range from 0 to 65535, with well-known ports including:
+- Port 80: HTTP (web traffic)
+- Port 443: HTTPS (secure web traffic)
+- Port 22: SSH (secure shell)
+- Port 21: FTP (file transfer)
+- Port 25: SMTP (email)
+- Port 3389: RDP (remote desktop)
