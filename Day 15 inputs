@@ -1,0 +1,31 @@
+Vulnerability : Command injection 
+
+Security Level : LOW 
+
+Input : 127.0.0.1 & whoami 
+Working : Here & is a command separator it accepts at low level and first it executes the command ping 127.0.0.1, then it executes whoami. The input directly passes to shell_exc().
+
+Input : 127.0.0.1 && dir
+Working : here && is a conditional operator, it executes the only if first succeeds. dir(it list files in current directory)
+
+
+Security Level : MEDIUM 
+
+Input : 127.0.0.1 & ipconfig, 127.0.0.1 |ipconfig
+Here the both & and | (pipe) are not blacklisted at medium level so it works
+
+Input : 127.0.0.1 && net user , 127.0.0.1;net user
+here && and ; are blacklisted at medium level 
+
+
+Security Level : HIGH
+
+Input : 127.0.0.1 & ipconfig , 127.0.0.1 && net user, 127.0.0.1 & whoami
+At high security level all the dangerous operators are removed (; | && || ` $() )
+ 
+But using decimal ip format we can bypass at high level 
+ex: input : 2130706433
+calculation = 27x256³ +  0×256² + 0×256¹ + 1×256⁰ 
+            = 2130706433
+
+Here 256 is used because each octet in ip address is an 8 bit number, So 8 bits =  2⁸ = 256 possible values. Each octet ranges from 0 to 255, total 256 values.
