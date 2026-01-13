@@ -1,0 +1,18 @@
+Brute Force Attack - Medium Security Level
+
+As in the LOW security level no rate limit to try 1000s of passwords instantly,
+
+But in MEDIUM security, 2secs delay that is sleep(2) after each failed attempt.
+
+ex: 10 pass = 20secs
+    100 pass= 3.3 minutes
+
+Practical Attack:
+
+Burp Suite:
+ 
+1. Same setup as Low
+2. Attack runs automatically (Burp waits for responses)
+3. Just takes much longer
+
+Delay only slows attack doesn't stop it, no max attempt limit(automated tools handle the delays).
