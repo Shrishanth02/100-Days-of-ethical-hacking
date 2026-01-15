@@ -1,0 +1,33 @@
+Today I explored OWASP Juice Shop - a modern, intentionally vulnerable web application that taught me how contemporary applications fail despite using the latest technologies.
+
+What I Discovered:
+
+📌 LOGIC FLAWS - The Most Dangerous
+• Purchased items for negative prices
+• Applied discount coupons multiple times
+• Bypassed payment workflows entirely
+These exploit intended functionality, not code bugs!
+
+📌 INSECURE AUTHENTICATION - Still a Problem
+• Weak passwords on admin accounts
+• Predictable session tokens
+• Missing MFA on critical accounts
+• Broken password reset mechanisms
+81% of breaches involve compromised credentials.
+
+📌 IMPROPER VALIDATION - The Classic Mistake
+• SQL Injection through search fields
+• XSS in product reviews
+• API parameter manipulation
+• File upload vulnerabilities
+Never trust user input. EVER.
+
+🎯Real-World Impact:
+The vulnerabilities I practiced today exist in production applications:
+• E-commerce platforms with price manipulation bugs
+• Banking apps with authentication bypasses
+• Healthcare systems with data exposure
+• APIs without proper authorization
+
+💡Key Insight:
+Modern frameworks and technologies don't automatically mean secure applications. Security must be built into the design, not added as an afterthought.
