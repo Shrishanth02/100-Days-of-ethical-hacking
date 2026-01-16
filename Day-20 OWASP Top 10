@@ -1,0 +1,47 @@
+Understanding OWASP Top 10 Vulnerabilities:
+
+The OWASP Top 10 is a globally recognized awareness document that identifies the most critical security risks facing web applications 
+It's compiled by the OWASP (Open Web Application Security Project) Foundation, a nonprofit organization dedicated to improving software security through community-led open source projects.
+How is it Known and Created?
+
+📌 The OWASP Top 10 has become the industry standard for web application security because:
+
+--> Global Expert Consensus: The report is founded on an agreement between security experts from around the world
+--> Data-Driven Approach: It's based on comprehensive data analysis from security vendors, consultancies, bug bounties, and organizational contributions
+--> Regular Updates: The list is updated periodically (typically every 3-4 years) to reflect emerging threats and new research. The most current version is OWASP Top 10 2025, with previous versions from 2021, 2017, 2013, and earlier.
+
+📌 The OWASP team:
+
+--> Collects vulnerability data from multiple sources (security vendors, consultancies, bug bounties, company contributions)
+--> Normalizes data to allow fair comparison between different testing methods.
+--> Analyzes CWE (Common Weakness Enumeration) distributions across thousands of tested applications
+--> Calculates incidence rates to determine how likely an application may contain specific vulnerabilities.
+--> Selects 8 categories from data analysis and 2 categories from community surveys to capture emerging threats not yet fully represented in historical data
+
+📍 OWASP Top 10 Vulnerabilities – 2021.
+
+1. Broken Access Control
+2. Cryptographic Failures (formerly Sensitive Data Exposure)
+3. Injection (SQL, NoSQL, OS, LDAP, etc.)
+4. Insecure Design
+5. Security Misconfiguration
+6. Vulnerable and Outdated Components
+7. Identification and Authentication Failures
+8. Software and Data Integrity Failures
+9. Security Logging and Monitoring Failures
+10. Server-Side Request Forgery (SSRF)
+
+📍 OWASP Top 10 Vulnerabilities – 2025
+
+1. A01:2025 – Broken Access Control
+2. A02:2025 – Security Misconfiguration
+3. A03:2025 – Software Supply Chain Failures
+4. A04:2025 – Cryptographic Failures
+5. A05:2025 – Injection
+6. A06:2025 – Insecure Design
+7. A07:2025 – Authentication Failures
+8. A08:2025 – Software or Data Integrity Failures
+9. A09:2025 – Security Logging & Alerting Failures
+10. A10:2025 – Mishandling of Exceptional Conditions
+
+This update keeps long-standing risks like broken access control and injection, while adding modern concerns like software supply chain failures and error/exception mishandling to reflect how apps are built and attacked today.
