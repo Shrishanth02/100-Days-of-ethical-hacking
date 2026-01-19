@@ -1,0 +1,27 @@
+What SQLmap is?
+SQLmap is an open‑source tool used in penetration testing to detect and assess SQL injection issues in web applications. It automates many checks that would otherwise be manual, it helps identify whether user input can interfere with database queries.
+
+Common Injection Points
+SQL injection vulnerabilities often appear in:
+--> URL query parameters
+--> Login forms
+--> Search fields
+--> Cookies or headers
+Any place that accepts user input is a potential risk.
+
+Databases Commonly Targeted
+SQLmap supports many database engines, such as:
+--> MySQL / MariaDB
+--> PostgreSQL
+--> Microsoft SQL Server
+--> Oracle
+--> SQLite
+Each database behaves differently, which the tool accounts for.
+
+SQLmap relies on several detection strategies:
+---> Error‑based behavior
+---> Boolean logic differences
+---> Time delays
+---> Out‑of‑band responses
+
+SQLmap is powerful because SQL injection is dangerous. The real goal is not exploitation, but building applications that cannot be exploited.
