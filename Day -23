@@ -1,0 +1,37 @@
+Brute Force Attacks –
+
+1. Simple Brute Force Attack
+Tries every possible password until one works.
+Example: Testing 0000 to 9999 to unlock a PIN-based account.
+
+2. Dictionary Attack
+Uses a list of common words and passwords.
+Example: Trying passwords like password, admin123, welcome.
+
+3. Hybrid Brute Force Attack
+Mix of dictionary words and variations.
+Example: password@123, admin2024, hello!.
+
+4. Credential Stuffing
+Uses leaked username-password pairs from breaches.
+Example: Using a breached email and password on banking or social media sites.
+
+5. Reverse Brute Force Attack
+Starts with one password and tries many usernames.
+Example: Trying Welcome@123 on thousands of email IDs.
+
+6. Password Spraying
+Uses one common password across many accounts slowly.
+Example: Trying Company@123 for all employees to avoid lockouts.
+
+7. Rainbow Table Attack
+Uses pre-computed hashes to crack passwords quickly.
+Example: Matching stolen hashed passwords against a rainbow table.
+
+8. Exhaustive Key Search Attack
+Tries every possible cryptographic key.
+Example: Breaking weak encryption with limited key length.
+
+9. Credential Recycling
+Reusing the same credentials across multiple platforms.
+Example: Same email and password used for Gmail, Facebook, and banking.
