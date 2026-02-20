@@ -1,0 +1,12 @@
+Top Cyber Threats This Week (Feb 2026)
+
+• AI Password Flaws**: LLMs generate *predictable* passwords — avoid them! Use password managers instead .  
+• Copilot Leak**: Microsoft fixed a bug letting Copilot summarize *confidential emails* without permission .  
+• Ransomware Evolution**: LockBit 5.0 now targets Proxmox virtualization platforms — enterprise threat rising.  
+• MacOS Under Fire**: Fake Homebrew sites deliver “Cuckoo Stealer” to harvest Keychain, crypto wallets & more.  
+• Phishing via Telegram**: GS7 group targets Fortune 500 firms using lookalike sites + Telegram bots for credential theft.  
+• GitLab SSRF**: CISA mandates federal patching by March 11 — critical flaw lets attackers probe internal networks .  
+• Remcos RAT Upgrade**: New variant streams *live webcam feeds* for real-time surveillance .  
+• China-Linked Risks**: Texas sues TP-Link & Anzu Robotics over alleged CCP data access ties .  
+
+💡 Stay sharp — attackers are using *trusted tools* (like RMM software) to fly under the radar .
